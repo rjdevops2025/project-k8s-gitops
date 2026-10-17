@@ -4,7 +4,7 @@ metadata:
   name: demo-app
   namespace: qa
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: demo-app
@@ -15,7 +15,14 @@ spec:
     spec:
       containers:
       - name: demo-app
-        image: https://hub.docker.com/u/rjdevops2025/demo-app:latest
+        image: docker.io/rjdevops2025/demo-app:latest
         ports:
         - containerPort: 8080
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
 
