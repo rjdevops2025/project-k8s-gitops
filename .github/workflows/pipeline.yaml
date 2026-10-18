@@ -49,6 +49,9 @@ jobs:
     - name: Trivy Scan
       run: trivy image docker.io/rjdevops2025/myapp:${{ github.sha }}
 
+    - name: Set working directory
+      run: cd $GITHUB_WORKSPACE
+
 
     - name: Update Kubernetes Manifests
       run: |
