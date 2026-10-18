@@ -29,12 +29,13 @@ jobs:
 
     - name: SonarQube Scan
       uses: sonarsource/sonarcloud-github-action@master
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with:
         args: >
           -Dsonar.projectKey=rjdevops2025_project-k8s-gitops
           -Dsonar.organization=rjdevops2025
           -Dsonar.host.url=https://sonarcloud.io
-          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
     - name: Trivy Scan
       run: trivy image docker.io/rjdevops2025/myapp:${{ github.sha }}
