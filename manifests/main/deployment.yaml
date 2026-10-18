@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: docker.io/rjdevops2025/myapp:latest
+        image: docker.io/rjdevops2025/myapp:391860defb44d1ae1a708360e2de4d3cba0f46e4
         ports:
         - containerPort: 80
