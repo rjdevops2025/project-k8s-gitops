@@ -49,9 +49,10 @@ jobs:
     - name: Trivy Scan
       run: trivy image docker.io/rjdevops2025/myapp:${{ github.sha }}
 
+
     - name: Update Kubernetes Manifests
       run: |
-        sed -i "s|docker.io/rjdevops2025/myapp:.*|mydockerhub/myapp:${{ github.sha }}|g" manifests/${{ github.ref_name }}/deployment.yaml
+        sed -i "s|docker.io/.*/myapp:.*|docker.io/${{ secrets.DOCKER_USERNAME }}/myapp:${{ github.sha }}|g" manifests/${{ github.ref_name }}/deployment.yaml
         git config --global user.email "ci@github.com"
         git config --global user.name "GitHub Actions"
         git commit -am "Update image tag"
