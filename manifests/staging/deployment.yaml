@@ -1,28 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-app
+  name: myapp
   namespace: staging
 spec:
-  replicas: 4
+  replicas: 2
   selector:
     matchLabels:
-      app: demo-app
+      app: myapp
   template:
     metadata:
       labels:
-        app: demo-app
+        app: myapp
     spec:
       containers:
-      - name: demo-app
-        image: docker.io/rjdevops2025/demo-app:latest
+      - name: myapp
+        image: docker.io/rjdevops2025/myapp:latest
         ports:
-        - containerPort: 8080
-        resources:
-          requests:
-            cpu: "300m"
-            memory: "512Mi"
-          limits:
-            cpu: "700m"
-            memory: "1Gi"
-
+        - containerPort: 80
